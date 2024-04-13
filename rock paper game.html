@@ -3,53 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roct paper scissor game  </title>
+    <title>Rock paper scissor game  </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>using boolean value ...</h1> <br>
-    <h1>Game rule </h1> 
-    <h2>Rock beat seccisor </h2> <br>
-    <h2> seccisor beat paper </h2> <br>
-    <h2>paper beat seccisor </h2> <br>
+ <h1  id="top" 
+ 
+ 
+ 
+> Game Loaded </h1> 
+
 
 <!-- rock  -->
-<div class="game-buttons">
-  <button id="rock"
-  onclick=" playgame('Rock'); "
-        >ROCK</button> <BR></BR>
+
+ <div class="container">
+
+        <button id="rock" class="game-button" onclick="playgame('Rock');">
+          <img src="https://nationaltoday.com/wp-content/uploads/2021/08/National-Pet-Rock-Day-1200x834.jpg" alt="Rock">
+      </button>
+
 
 <!-- paper  -->
-    <button  id="paper"
-    onclick=" playgame('Paper'); "   
-      >PAPER</button> <BR></BR>
+
+      <button id="paper" class="game-button" onclick="playgame('Paper');">
+        <img src="https://img.freepik.com/free-photo/top-view-love-letters-arrangement_23-2150716537.jpg" alt="Paper">
+    </button>
+
 
  <!-- SCESSIOR -->
-    <button  id="scissors"
-    onclick=" playgame('Scissors'); "
-        > SCESSIOR</button> <BR></BR>
+    
+        <button id="scissors" class="game-button" onclick="playgame('Scissors');">
+          <img src="https://t3.ftcdn.net/jpg/00/55/10/40/360_F_55104038_VMb5Bfm1cCVyh93VbJIoK4AQrlmyH0Wc.jpg" alt="Scissors">
+      </button>
+
 </div>
 
- <button id="rock"
+     <br> <br>
+     
+     <div class="result">
+        <p id="result-text">your score is here !</p>
+      </div>
+
+ <button id="reset"
  onclick=" score.win=0 ;
- score.tie = 0;
+ score.Tie = 0;
  score.lose =0;
     alert(`Score :  WIN ${0} | LOSE ${0}`) ;
     console.log(`Score :  WIN = ${0}  |  LOSE = ${0}  |  TIES =${0}`)"
- > Resest code </button>
+ > Resest score </button>
 
 
 </body>
     <script>
-       let Score = JSON.parse(localStorage.getItem('score')) || {
-        win: 0,
+       let score = JSON.parse(localStorage.getItem('score')) || {
+        win : 0,
         lose: 0,
-        tie: 0
+        Tie: 0
       };
+
+
    function playgame (playermove){
    const    compmove = computermove(); 
-
-    
   let  result = ' ';
    if(playermove==='Paper'){
          if(compmove==='Rock'){
@@ -94,13 +108,22 @@
                   score.lose+=1;
                 }
               else if(result ==='Tie ...'){
-               score.tie+=1;
+               score.Tie +=1;
             }
 
          localStorage.setItem('score', JSON.stringify(score));
 
-             alert(`You picked ${playermove}. Computer picked ${compmove}. ${result}
-           WIN ${score.win} | lose ${score.lose}  | tie ${score.tie}`  );
+        //  to server result 
+         const resultText = document.getElementById('result-text');
+            resultText.textContent = `You picked ${playermove}. Computer picked ${compmove}. ${result} 
+            WIN: ${score.win} | LOSE: ${score.lose} | TIE: ${score.Tie}`;
+
+        
+
+          //    alert(`You picked ${playermove}. Computer picked ${compmove}. ${result}
+          //  WIN :  ${score.win} | lose : ${score.lose}  | tie : ${score.Tie}`  );
+
+
         }
   // function for computer move 
    function computermove (){
@@ -118,3 +141,6 @@
    }
         </script>
 </html>
+
+
+
