@@ -11,6 +11,13 @@ body {
     background-attachment: fixed;
     /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
 }
+h4{ 
+    text-align: center;
+    align-items: center;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}
+
 #top {
     /* Add a linear gradient as the text shadow */
     text-shadow: 0 0 10px rgba(101, 0, 94, 0.5),
